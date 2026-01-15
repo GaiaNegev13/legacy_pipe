@@ -4,7 +4,7 @@ from importlib import metadata
 import pandas as pd
 from tqdm import tqdm
 
-metadata_df = pd.read_pickle('path/to/manually/cleaned/metadata.pkl')  # INSERT PATH TO CLEANED METADATA PKL HERE
+# metadata_df = pd.read_pickle('path/to/manually/cleaned/metadata.pkl')  # INSERT PATH TO CLEANED METADATA PKL HERE
 
 # Define Protocol Priority Ranking (BEST to WORST)
 # Lower rank number = Higher Priority
@@ -72,6 +72,6 @@ def filter_by_t1w_priority(df: pd.DataFrame) -> pd.DataFrame:
     
     return df_filtered.reset_index(drop=True)
 
-# Example Usage:
-full_metadata_filtered = filter_by_t1w_priority(metadata_df.copy())
-full_metadata_filtered.to_csv('/path/to/interim/full_metadata_best_protocol.csv', index=False)
+# # Example Usage:
+# full_metadata_filtered = filter_by_t1w_priority(metadata_df.copy())
+# full_metadata_filtered.to_csv('/path/to/interim/full_metadata_best_protocol.csv', index=False)

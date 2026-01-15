@@ -72,7 +72,7 @@ def process_t1w_df(df_filtered: pd.DataFrame, output_dir: str):
     print(f"🎉 Conversion run complete for {total_rows} rows.")
 
 
-# Example Usage:
-OUTPUT_BIDS_DIR = '/home/gaia/Projects/legacy_data/BIDS_converted' # EDIT - Output BIDS directory
-info_for_conversion_filtered = pd.read_csv('/home/gaia/Projects/legacy_data/refactored_project/data/interim/full_metadata_best_protocol.csv')
-process_t1w_df(info_for_conversion_filtered, OUTPUT_BIDS_DIR)
+# # Example Usage:
+# OUTPUT_BIDS_DIR = '/home/gaia/Projects/legacy_data/BIDS_converted' # EDIT - Output BIDS directory
+# info_for_conversion_filtered = pd.read_csv('/home/gaia/Projects/legacy_data/refactored_project/data/interim/full_metadata_best_protocol.csv')
+# process_t1w_df(info_for_conversion_filtered, OUTPUT_BIDS_DIR)
