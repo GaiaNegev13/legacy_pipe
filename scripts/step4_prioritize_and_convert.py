@@ -1,5 +1,5 @@
 # prioritize t1w protocols for subjects with many protocols 
-from Projects.legacy_data.legacy_pipe.legacy_pipe.t1w_bids_conversion import process_t1w_df
+from legacy_pipe.legacy_pipe.t1w_bids_conversion import process_t1w_df
 from legacy_pipe.legacy_pipe.prioritize_t1w_protocols import filter_by_t1w_priority
 import pandas as pd
 
