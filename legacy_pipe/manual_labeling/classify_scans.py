@@ -7,10 +7,10 @@ from PIL import Image, ImageTk
 # --- Configuration ---
 # Set the root directory containing your CAT12 derivative JPG files.
 # The script will search this directory and all subdirectories recursively.
-ROOT_DIR = "/path/to/cat12/derivatives"  # **CHANGE THIS PATH**, last segment should be "derivatives".
+ROOT_DIR = "/home/gaia/Projects/HardDriveOutput/BIDS_over_thirties/derivatives"  # **CHANGE THIS PATH**, last segment should be "derivatives".
 
 # The name of the output CSV file where results will be saved.
-OUTPUT_CSV = "/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/SourceName_scan_classification_results.csv" # **CHANGE THIS PATH**
+OUTPUT_CSV = "/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/HardDrive_BIDS_over_thirties_scan_classification_results.csv" # **CHANGE THIS PATH**
 
 # Allowed classification keys (1 to 9). You can expand this as needed.
 # 1 = Good, 
