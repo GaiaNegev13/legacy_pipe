@@ -9,7 +9,8 @@ df$sex <- as.factor(df$sex)
 df$subject_id <- as.factor(df$subject_id)
 
 # 2. Identify all unique ROIs
-roi_list <- unique(df$region_label)
+# roi_list <- unique(df$region_label)
+#roi_list <- c(421, 280)
 
 # Prepare a list to store every single result row
 all_results_list <- list()
@@ -88,6 +89,6 @@ for (roi_name in roi_list) {
 all_effects <- do.call(rbind, all_results_list)
 
 # 5. Export to one CSV for Python
-write.csv(all_effects, 'all_effects.csv', row.names = FALSE)
-write.csv(do.call(rbind, all_viz_list), 'all_roi_curves.csv', row.names = FALSE)
+write.csv(all_effects, 'fixed_all_effects.csv', row.names = FALSE)
+write.csv(do.call(rbind, all_viz_list), 'fixed_all_roi_curves.csv', row.names = FALSE)
 cat("Done! Results saved to all_effects.csv\n")
