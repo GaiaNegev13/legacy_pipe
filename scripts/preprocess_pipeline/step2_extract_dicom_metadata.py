@@ -15,7 +15,8 @@ METADATA_FIELDS = {
     'weight': "PatientWeight",
     'protocol': "SeriesDescription",
     'institute': "InstitutionName",
-    'manufacturer': "Manufacturer"
+    'manufacturer': "Manufacturer",
+    'tesla': "MagneticFieldStrength"
 }
 
 def extract_metadata(dicom_path: Path):
