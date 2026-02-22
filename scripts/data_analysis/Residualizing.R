@@ -10,7 +10,8 @@ df$sex <- as.factor(df$sex)
 df$subject_id <- as.factor(df$subject_id)
 
 # 2. Identify all unique ROIs
-roi_list <- unique(df$region_label)
+# roi_list <- unique(df$region_label)
+roi_list <- c(421, 280)
 
 all_results_list <- list()
 all_viz_list <- list() 
