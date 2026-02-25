@@ -22,9 +22,16 @@ volumes = combined_df[(combined_df['classification_label'] == 1) | (combined_df[
 
 volumes['age_in_years'] = pd.to_numeric(volumes['age_in_years'], errors='coerce')
 
-# divide volumes into age bins according to bin size
-bin_size = 5
-volumes['age_bin'] = pd.cut(volumes['age_in_years'], bins=np.arange(15, 85, bin_size))
+# # divide volumes into age bins according to bin size
+# bin_size = 5
+# volumes['age_bin'] = pd.cut(volumes['age_in_years'], bins=np.arange(15, 85, bin_size))
+
+# Define the explicit bin edges based on your windows
+# We start at 18 and use the upper bound of each tuple
+bins = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 100]
+
+# Use pd.cut with right=False so that (18, 24) includes 18 but not 25
+volumes['age_bin'] = pd.cut(volumes['age_in_years'], bins=bins, right=False)
 
 print(f"amount of scans in each bin:")
 print(volumes['age_bin'].value_counts().sort_index())
@@ -118,5 +125,5 @@ for bin in volumes['age_bin'].unique().dropna():
 
 birth_year_coef_df = coef_df[coef_df['variable'] == 'birth_year'].copy()
 
-birth_year_coef_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/birth_year_coef_df_age_bins_size_{bin_size}.csv", index=False)
-coef_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/coef_df_age_bins_size_{bin_size}.csv", index=False)
+birth_year_coef_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/birth_year_coef_df_age_manual_bins.csv", index=False)
+coef_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/interim/coef_df_age_manual_bins.csv", index=False)
