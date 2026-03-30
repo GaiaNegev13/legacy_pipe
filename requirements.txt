@@ -1,14 +1,38 @@
+# ── Core data / numerics ──────────────────────────────────────────────────────
+pandas
+numpy
+scipy
+
+# ── Statistics & modelling ────────────────────────────────────────────────────
+statsmodels
+scikit-learn
+pygam
+
+# ── Neuroimaging ──────────────────────────────────────────────────────────────
+nibabel
+nilearn
+pydicom
+neuroCombat
+
+# ── Visualisation ─────────────────────────────────────────────────────────────
+matplotlib
+seaborn
+Pillow
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+tqdm
+python-dateutil
+balance
+
+# ── Dev / notebook tooling ────────────────────────────────────────────────────
 black
 flake8
-ipython
 isort
+ipython
 jupyterlab
-matplotlib
-mkdocs
 notebook
-numpy
-pandas
-pip
+mkdocs
 python-dotenv
-scikit-learn
+
+# ── Local package (editable install) ─────────────────────────────────────────
 -e .
