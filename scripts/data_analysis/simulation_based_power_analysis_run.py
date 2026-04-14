@@ -100,34 +100,34 @@ for age in age_windows:
             'first_sample_size_99': stable_99
         })
         
-        # # 4. Create the Funnel Plot for THIS ROI
-        # plt.figure(figsize=(10, 6))
+        # 4. Create the Funnel Plot for THIS ROI
+        plt.figure(figsize=(10, 6))
 
-        # # --- Shading Layers ---
-        # plt.fill_between(stats['sample_size'], stats['low_99'], stats['high_99'], 
-        #                  color='forestgreen', alpha=0.1, label='99% CI')
-        # plt.fill_between(stats['sample_size'], stats['low_95'], stats['high_95'], 
-        #                  color='forestgreen', alpha=0.2, label='95% CI')
+        # --- Shading Layers ---
+        plt.fill_between(stats['sample_size'], stats['low_99'], stats['high_99'], 
+                         color='forestgreen', alpha=0.1, label='99% CI')
+        plt.fill_between(stats['sample_size'], stats['low_95'], stats['high_95'], 
+                         color='forestgreen', alpha=0.2, label='95% CI')
 
-        # # --- Border Lines ---
-        # plt.plot(stats['sample_size'], stats['low_99'], color='gray', linestyle='--', lw=0.8, alpha=0.4)
-        # plt.plot(stats['sample_size'], stats['high_99'], color='gray', linestyle='--', lw=0.8, alpha=0.4)
+        # --- Border Lines ---
+        plt.plot(stats['sample_size'], stats['low_99'], color='gray', linestyle='--', lw=0.8, alpha=0.4)
+        plt.plot(stats['sample_size'], stats['high_99'], color='gray', linestyle='--', lw=0.8, alpha=0.4)
 
-        # # --- Central Trend ---
-        # plt.plot(stats['sample_size'], stats['mean'], color='forestgreen', lw=2, label='Mean Coef')
+        # --- Central Trend ---
+        plt.plot(stats['sample_size'], stats['mean'], color='forestgreen', lw=2, label='Mean Coef')
 
-        # # Formatting
-        # plt.xscale('log')
-        # plt.xticks(n_list, labels=[str(x) for x in n_list])
-        # plt.axhline(0, color='black', lw=1)
-        # plt.xlabel('Sample size')
-        # plt.ylabel('Birth Year Coefficient (Effect Size)')
-        # plt.legend()
-        # plt.title(f'Sample Size Stability For ROI {roi}, {min_age}-{max_age} years old')
+        # Formatting
+        plt.xscale('log')
+        plt.xticks(n_list, labels=[str(x) for x in n_list])
+        plt.axhline(0, color='black', lw=1)
+        plt.xlabel('Sample size')
+        plt.ylabel('Birth Year Coefficient (Effect Size)')
+        plt.legend()
+        plt.title(f'Sample Size Stability For ROI {roi}, {min_age}-{max_age} years old')
 
-        # # Show plot for this ROI
-        # plt.tight_layout()
-        # plt.show()
+        # Show plot for this ROI
+        plt.tight_layout()
+        plt.show()
 
     print(f"Completed simulations for age window {min_age}-{max_age}.")
 
@@ -135,4 +135,4 @@ for age in age_windows:
     simulation_df = pd.DataFrame(simulation_results)
 
     # # save simulation df for the specific window
-    simulation_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/{reps}simulation_results_age_{min_age}_{max_age}.csv", index=False)
+    # simulation_df.to_csv(f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/{reps}simulation_results_age_{min_age}_{max_age}.csv", index=False)
