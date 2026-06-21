@@ -1,3 +1,5 @@
+# Israeli ID validation function (matches Israeli ID validation rules)
+
 def CheckID(ID) :
 	if(len(ID)!=9) :		
 		return False
