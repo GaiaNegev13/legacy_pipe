@@ -1,12 +1,7 @@
-Generating the docs
+Documentation
 ----------
 
-Use [mkdocs](http://www.mkdocs.org/) structure to update the documentation. 
-
-Build locally with:
-
-    mkdocs build
-
-Serve locally with:
-
-    mkdocs serve
+Contains:
+* Explanation of each part of the workflow
+* Flowchart of the workflow 
+* Poster PDF file, presenting the research done using this code, as presented in 2026 OHBM Conference
