@@ -6,9 +6,6 @@ data/
 *.nii*
 *.gz
 
-# Classified notebooks
-notebooks/
-
 # Mac OS-specific storage files
 .DS_Store
 

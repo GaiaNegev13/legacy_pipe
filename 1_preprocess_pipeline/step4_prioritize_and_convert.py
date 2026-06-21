@@ -1,6 +1,6 @@
 # prioritize t1w protocols for subjects with many protocols 
-from legacy_pipe.legacy_pipe.t1w_bids_conversion import process_t1w_df
-from legacy_pipe.legacy_pipe.prioritize_t1w_protocols import filter_by_t1w_priority
+from src.t1w_bids_conversion import process_t1w_df
+from src.prioritize_t1w_protocols import filter_by_t1w_priority
 import pandas as pd
 
 metadata_df = pd.read_pickle('path/to/manually/cleaned/metadata.pkl')  # INSERT PATH TO CLEANED METADATA PKL HERE
