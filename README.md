@@ -8,4 +8,4 @@ The thesis subject is Brain Structure Across Generations - Changes in Grey Matte
 3. Statistical analysis and validation of the data 
 
 ## Project Workflow
-You can view a visualization of the pipeline [here](Project Workflow - legacy_pipe.pdf)
+You can view a visualization of the pipeline [here](project_workflow_legacy_pipe.pdf)
