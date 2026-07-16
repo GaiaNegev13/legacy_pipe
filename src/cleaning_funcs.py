@@ -423,3 +423,74 @@ def unify_multiple_dobs(df, unique_id_col='unique_id', dob_col='dob'):
     
     return df
 
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.stats as stats
+
+def check_confounding(df, var_name, use_numeric_labels=True, title_size=32, label_size=28, tick_size=24, legend_size=24):
+    print(f"\n--- Confounding Check (Batch vs. {var_name.replace('_', ' ').title()}) ---")
+
+    batch_col = 'super_batch'
+    unique_batches = sorted(df[batch_col].unique())
+    
+    # 1. Handle Batch Labeling Strategy
+    if use_numeric_labels:
+        # Maps actual names to '1', '2', '3', etc.
+        batch_mapping = {old_val: str(i + 1) for i, old_val in enumerate(unique_batches)}
+        plot_batches = df[batch_col].map(batch_mapping)
+        hue_order = [str(i + 1) for i in range(len(unique_batches))]
+    else:
+        # Keeps original super_batch names
+        plot_batches = df[batch_col]
+        hue_order = unique_batches
+
+    # 2. Create Plotting Grid (Single density plot)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    # KDE Plot
+    sns.kdeplot(
+        data=df, 
+        x=var_name, 
+        hue=plot_batches,  
+        hue_order=hue_order, # Maintains consistent legend ordering
+        fill=True, 
+        alpha=0.3, 
+        ax=ax, 
+        common_norm=False
+    )
+    
+    # Manual Font Size Configurations
+    ax.set_title(
+        f"Density Distribution of {var_name.replace('_', ' ').title()} by Batch", 
+        fontsize=title_size, 
+        pad=15
+    )
+    
+    ax.set_xlabel(var_name.replace('_', ' ').title(), fontsize=label_size, labelpad=10)
+    ax.set_ylabel("Density", fontsize=label_size, labelpad=10)
+    ax.tick_params(axis='both', which='major', labelsize=tick_size)
+    
+    legend = ax.get_legend()
+    if legend:
+        legend.set_title("Batch", prop={'size': legend_size})
+        for text in legend.get_texts():
+            text.set_fontsize(legend_size)
+    
+    plt.tight_layout()
+    plt.show()
+
+    # 3. Statistical Test (ANOVA)
+    groups = [group[var_name].values for _, group in df.groupby(batch_col)]
+    
+    f_stat, p_val = stats.f_oneway(*groups)
+
+    print(f"ANOVA Degrees of Freedom: between groups = {len(groups) - 1}, within groups = {sum(len(g) for g in groups) - len(groups)}")
+    print(f"ANOVA F-statistic: {f_stat:.4f}")
+    print(f"ANOVA p-value: {p_val:.4f}")
+
+    if p_val < 0.05:
+        print(f"ALERT: Strong confounding detected. {var_name} differs significantly across batches.")
+        print("NeuroCombat will need to work harder to separate biological variance from site effects.")
+    else:
+        print(f"PASS: No significant difference in {var_name} across batches.")
