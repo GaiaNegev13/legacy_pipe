@@ -11,7 +11,7 @@ combined_df = pd.read_pickle("/home/gaia/Projects/legacy_data/legacy_pipe/data/p
 list_of_rois = list(range(1, 455))
 n_list = [25, 33, 50, 70, 100, 135, 175, 225, 300]
 reps = 1000
-age_windows = [20, 25, 30]
+age_windows = [45, 50, 55, 60]  # Age windows to analyze
 
 # --- 2. Run Simulation ---
 for age in age_windows:
