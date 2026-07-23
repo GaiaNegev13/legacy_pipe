@@ -494,3 +494,33 @@ def check_confounding(df, var_name, use_numeric_labels=True, title_size=32, labe
         print("NeuroCombat will need to work harder to separate biological variance from site effects.")
     else:
         print(f"PASS: No significant difference in {var_name} across batches.")
+
+
+def print_metadata(df):
+    """
+    Print canonical metadata stats from a scan-level dataframe
+    (one row per subject_id + session_id, after within-bin dedup).
+    Overall N and sex percentages are computed over unique subjects
+    (one row per subject, oldest session kept). Age-bin counts are computed
+    by deduplicating independently within each bin, so a subject appears at
+    most once per bin but can appear across multiple bins if scanned at
+    different ages — the per-bin counts may therefore sum to more than the
+    overall subject count.
+    """
+    scans = df.drop_duplicates(subset=['subject_id', 'session_id'])
+    subjects = scans.sort_values('session_id').drop_duplicates(subset=['subject_id'])
+    n_scans = len(scans)
+    n_subjects = len(subjects)
+    n_f = len(subjects[subjects['sex'] == 'F'])
+    n_m = len(subjects[subjects['sex'] == 'M'])
+    print(f"metadata stats: {n_scans} scans, {n_subjects} subjects")
+    print(f"percentage of female subjects: {n_f / n_subjects * 100:.2f}%")
+    print(f"percentage of male subjects: {n_m / n_subjects * 100:.2f}%")
+    for lo, hi in [(20, 25), (25, 30), (30, 35)]:
+        bin_scans = scans[(scans['age_in_years'] >= lo) & (scans['age_in_years'] < hi)]
+        bin_subjects = bin_scans.sort_values('session_id').drop_duplicates(subset=['subject_id'])
+        print(f"subjects age {lo}-{hi}: {len(bin_subjects)}")
+    print(f"age: {scans['age_in_years'].min():.2f}–{scans['age_in_years'].max():.2f}, "
+          f"mean {scans['age_in_years'].mean():.2f}, std {scans['age_in_years'].std():.2f}")
+    print(f"birth year: {scans['birth_year'].min()}–{scans['birth_year'].max()}, "
+          f"mean {scans['birth_year'].mean():.2f}, std {scans['birth_year'].std():.2f}")
