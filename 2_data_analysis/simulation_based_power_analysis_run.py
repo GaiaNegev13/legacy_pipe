@@ -10,7 +10,7 @@ combined_df = pd.read_pickle("/home/gaia/Projects/legacy_data/legacy_pipe/data/p
 
 list_of_rois = list(range(1, 455))
 n_list = [25, 50, 70, 100, 135, 175, 225, 300]
-reps = 500
+reps = 1000
 age_windows = [20, 25, 30]  # Age windows to analyze
 
 # --- 2. Run Simulation ---
@@ -89,12 +89,12 @@ for age in age_windows:
     
     # Save Plotting Data (The stats for the funnel)
     window_plotting_df = pd.concat(all_plotting_stats)
-    plot_save_path = f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/plotting_stats_{min_age_bin}_{max_age_bin}.csv"
+    plot_save_path = f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/{reps}reps_plotting_stats_{min_age_bin}_{max_age_bin}.csv"
     window_plotting_df.to_csv(plot_save_path, index=False)
     
     # Save Summary Data (The stable N per ROI)
     summary_df = pd.DataFrame(simulation_summary)
-    summary_save_path = f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/stability_summary_{min_age_bin}_{max_age_bin}.csv"
+    summary_save_path = f"/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/{reps}reps_stability_summary_{min_age_bin}_{max_age_bin}.csv"
     summary_df.to_csv(summary_save_path, index=False)
 
     print(f"✅ Saved plotting data and summary for window {min_age_bin}-{max_age_bin}")
