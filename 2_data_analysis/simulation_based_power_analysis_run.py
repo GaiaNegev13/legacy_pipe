@@ -9,8 +9,8 @@ import os
 combined_df = pd.read_pickle("/home/gaia/Projects/legacy_data/legacy_pipe/data/processed/combined_df_with_weights_per_window.pkl")
 
 list_of_rois = list(range(1, 455))
-n_list = [25, 33, 50, 70, 100, 135, 175, 225, 300]
-reps = 1000
+n_list = [25, 50, 70, 100, 135, 175, 225, 300]
+reps = 500
 age_windows = [20, 25, 30]  # Age windows to analyze
 
 # --- 2. Run Simulation ---
