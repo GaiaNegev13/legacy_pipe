@@ -462,7 +462,7 @@ def check_confounding(df, var_name, use_numeric_labels=True, title_size=32, labe
     
     # Manual Font Size Configurations
     ax.set_title(
-        f"Density Distribution of {var_name.replace('_', ' ').title()} by Batch", 
+        f"{var_name.replace('_', ' ').title()} by Batch", 
         fontsize=title_size, 
         pad=15
     )
