@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Collaboration Preferences
+
+- **Always explain before asking for approval.** Whenever an action requires the user's approval (e.g. running a command, editing a file, installing a package), first explain what you want to do and why, then ask for approval. Don't just fire the permission prompt with no context.
+
 ## Project Overview
 
 This is a neuroscience master's thesis project at the Sagol School of Neuroscience, Tel Aviv University (PI: Yaniv Assaf). The research investigates **generational (cohort) effects on brain structure** — how grey matter volume (GMV) differs across birth years, independent of chronological aging.
